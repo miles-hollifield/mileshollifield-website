@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  isNavbarTransparent = true;
 
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.isNavbarTransparent = (window.pageYOffset === 0);
+  }
 }
